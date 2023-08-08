@@ -34,5 +34,19 @@
   .alumni-card p {
     margin-bottom: 0;
   }
+
+  .search-filters {
+    display: flex;
+    justify-content: flex-end;
+    /* align-items: center; */
+    padding: 10px;
+  }
+  
+  .search-filter {
+    margin-right: 10px;
+  }
+
+  
+  
   
   
