@@ -35,21 +35,25 @@ function IssuingAuthorityDashboard() {
       };
   return (
     <>
-      <div className="container-fluid mt-5 ia-details-container">
-      <div className="row ia-details">
-      <div className="col-12 col-md-6">
-            <h1>{user.name}</h1>
-            <h5>{user.email}</h5>
-            <p>{user.walletaddress}</p>
-      </div>
-
-      <div className="col-12 col-md-6 d-flex flex-column align-items-center ia-details-image">
+       <div className="container-fluid mt-5 ia-details-container">
+        <div className="row ia-details">
+          <div className="col-12 col-md-6 d-flex flex-column align-items-center ia-details-image">
             <div className="rounded-circle overflow-hidden mb-2 border border-secondary" style={{ width: '140px', height: '140px' }}>
               <img src={user.profilePhoto} alt="User Profile" className="w-100 h-100 object-fit-cover" />
             </div>
-            <p>{user.id}</p>
-      </div>
-      </div>
+           
+            <div>
+            <button className="ia-edit-profile-button">Edit Profile</button></div>
+          </div>
+
+          <div className="col-12 col-md-6">
+            <h1>{user.name}</h1>
+            <h5>{user.email}</h5>
+            <h6>{user.id}</h6>
+            <p>{user.walletaddress}</p>
+          </div>
+        </div>
+
       </div>
 
       <div className="container" style={{ marginLeft: '0px' }}>
