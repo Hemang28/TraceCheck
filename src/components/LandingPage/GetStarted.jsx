@@ -1,6 +1,5 @@
 import React from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
-import image from "/Users/saurabhjha1402/Desktop/TraceCheck/src/assets/Getimg.jpg";
+import image from '../../assets/Getimg.jpg'
 
 const GetStarted = () => {
   return (

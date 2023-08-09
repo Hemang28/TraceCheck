@@ -1,7 +1,6 @@
 // VerificationReq.jsx
 import React, { useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "/Users/saurabhjha1402/Desktop/TraceCheck/src/styles/Forms/Verification.css"; // Import your custom styles
+import '../../styles/Forms/Verification.css'
 
 function VerificationReq() {
   const [userId, setUserId] = useState("");

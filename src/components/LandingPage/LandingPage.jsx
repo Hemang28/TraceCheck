@@ -1,9 +1,15 @@
 import React, { useEffect, useState } from "react";
-import imageL from "/Users/saurabhjha1402/Desktop/TraceCheck/src/assets/Landingimg.jpeg";
-import "/Users/saurabhjha1402/Desktop/TraceCheck/src/styles/Forms/Landing.css";
+import imageL from "../../assets/Landingimg.jpeg";
+import '../../styles/Forms/Landing.css'
+import { useNavigate } from "react-router-dom";
 
-const App = () => {
+function LandingPage() {
+  const navigate = useNavigate();
   const [showContent, setShowContent] = useState(false);
+
+  const handleGetStarted = () => {
+    navigate("/getstarted"); // Replace '/upload-research' with the actual route/path of the UploadResearch page
+  };
 
   useEffect(() => {
     setShowContent(true);
@@ -68,7 +74,7 @@ const App = () => {
                 <h1 className={`  h1 fw-bold ${showContent ? "fade-in" : ""}`}>
                   TRACECHECK
                 </h1>
-                <button className="btn btn-dark btng">Get Started</button>
+                <button className="btn btn-dark btng" onClick={handleGetStarted}>Get Started</button>
               </div>
             </div>
           </div>
@@ -85,4 +91,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default LandingPage;
