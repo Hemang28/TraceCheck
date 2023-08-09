@@ -1,11 +1,11 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import image from "/Users/saurabhjha1402/Desktop/TraceCheck/src/assets/getstarted.svg";
+import image from "/Users/saurabhjha1402/Desktop/TraceCheck/src/assets/Getimg.jpg";
 
 const GetStarted = () => {
   return (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-light ">
+      <nav className="navbar navbar-expand-lg navbar-light py-1 ">
         <div className="container">
           <a className="navbar-brand" href="#">
             <img
@@ -53,8 +53,10 @@ const GetStarted = () => {
             </div>
           </div>
           <div className="col-md-6 d-flex flex-column justify-content-center">
-            <h1 className="fs-3">Name of the issuing authority</h1>
-            <p className="fs-5">Issuing authority details</p>
+            <h1 className=" h1 fs-3">Name of the issuing authority</h1>
+            <p className="fs-5  h1">Issuing authority details</p>
+            <br></br>
+            <br></br>
             <button className="btn btn-dark btng" style={{ maxWidth: "200px" }}>
               Get Started
             </button>
