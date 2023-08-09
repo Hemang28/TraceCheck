@@ -31,7 +31,9 @@
   .navbar {
     background-color: bisque;
   }
-  
+  .btng{
+    background-color:coral;
+  }
   .button-container {
     margin-top: 20px;
     display: flex;
