@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import '../../styles/Forms/RegistrationUser.css'
+import "/Users/saurabhjha1402/Desktop/TraceCheck/src/styles/Forms/RegistrationUser.css";
 
 function RegistrationUser() {
   const [isLoginActive, setIsLoginActive] = useState(false);

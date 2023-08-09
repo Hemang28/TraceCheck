@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import UserRequests from "../userDashboard/UserRequests";
-import UserCertificates from "../userDashboard/UserCertificates";
-import '../../styles/userDashboard/UserDashboard.css'
+import UserCertificates from "/Users/saurabhjha1402/Desktop/TraceCheck/src/components/userDashboard/UserCertificates.js";
+import UserRequests from "/Users/saurabhjha1402/Desktop/TraceCheck/src/components/userDashboard/UserRequests.js";
+// Assuming you have a similar AlumniProfile component
+import "/Users/saurabhjha1402/Desktop/TraceCheck/src/styles/userDashboard/UserDashboard.css";
+import logo from "/Users/saurabhjha1402/Desktop/TraceCheck/src/assets/dummy-user.png";
 
 function CopyofAlumni() {
   const alumni = {

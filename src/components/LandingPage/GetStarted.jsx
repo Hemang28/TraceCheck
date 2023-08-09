@@ -1,5 +1,6 @@
 import React from "react";
-import image from '../../assets/Getimg.jpg'
+import "bootstrap/dist/css/bootstrap.min.css";
+import image from "../../assets/Getimg.jpg";
 
 const GetStarted = () => {
   return (
