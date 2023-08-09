@@ -9,7 +9,7 @@ import LandingPage from './components/LandingPage/LandingPage';
 import GetStarted from './components/LandingPage/GetStarted';
 import VerificationReq from './components/RegistrationPage/VerificationReq';
 import RegistrationUser from './components/RegistrationPage/RegistrationUser';
-
+import CopyAlumni from './components/RegistrationPage/CopyAlumni';
 function App() {
   return (
     <BrowserRouter>
@@ -23,6 +23,7 @@ function App() {
     <Route path="/getstarted" element={<GetStarted />} />
     <Route path="/verification" element={<VerificationReq />} />
     <Route path="/Registrationuser" element={<RegistrationUser />} />
+    <Route path="/copyalumni" element={<CopyAlumni />} />
 
 
     </Routes>

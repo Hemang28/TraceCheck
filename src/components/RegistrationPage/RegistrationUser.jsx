@@ -20,10 +20,12 @@ function RegistrationUser() {
       <div className={`page ${isLoginActive ? "active" : ""}`}>
         <div className={`welcome ${isLoginActive ? "active" : ""}`}>
           <h2>Welcome Back!</h2>
-          <p>Hello </p>
-          <button className="sign_in" onClick={handleSignInClick}>
-            Sign In
-          </button>
+          <p>Hello</p>
+          {isLoginActive ? null : (
+            <button className="sign_in" onClick={handleSignInClick}>
+              Sign In
+            </button>
+          )}
           <button
             className={`btn ${isSignUpActive ? "active" : ""}`}
             onClick={handleSignUpClick}
@@ -39,9 +41,10 @@ function RegistrationUser() {
             <input type="email" name="email" placeholder="Email" required />
             <br />
             <input
-              type="password"
-              name="password"
-              placeholder="Password"
+              type="file" /* Add the input for profile photo */
+              name="profilePhoto"
+              accept="image/*"
+              placeholder="Profile Photo"
               required
             />
             <br />
@@ -57,13 +60,6 @@ function RegistrationUser() {
           <form method="POST" action="login_user.php">
             <h2>Login your Account</h2>
             <input type="email" name="email" placeholder="Email" required />
-            <br />
-            <input
-              type="password"
-              name="password"
-              placeholder="Password"
-              required
-            />
             <br />
             <input
               type="submit"
