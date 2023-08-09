@@ -10,9 +10,11 @@ import GetStarted from './components/LandingPage/GetStarted';
 import VerificationReq from './components/RegistrationPage/VerificationReq';
 import RegistrationUser from './components/RegistrationPage/RegistrationUser';
 import CopyAlumni from './components/RegistrationPage/CopyAlumni';
+import Navbar from  './components/Navbar';
 function App() {
   return (
     <BrowserRouter>
+    <Navbar/>
     <Routes>
     <Route exact path="/" element={<UserDashboard />} />
     <Route path="/Issue-Certificate-Form" element={<IssueCertificateForm/>}></Route>
@@ -24,6 +26,7 @@ function App() {
     <Route path="/verification" element={<VerificationReq />} />
     <Route path="/Registrationuser" element={<RegistrationUser />} />
     <Route path="/copyalumni" element={<CopyAlumni />} />
+
 
 
     </Routes>
