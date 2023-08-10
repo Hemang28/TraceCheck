@@ -1,19 +1,10 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
 import image from "../../assets/Getimg.jpg";
 import image2 from "../../assets/Getimage2.png";
 import "../../styles/Forms/Getstarted.css";
 
 const GetStarted = () => {
-  const navigate = useNavigate();
-
-  const handleIAGetStated = () => {
-    navigate("/IA-Dashboard");
-  };
-
-  const handleUserGetStarted = () => {
-    navigate("/User-Dashboard");
-  };
   return (
     <div>
       <div className="container ">
@@ -57,15 +48,6 @@ const GetStarted = () => {
                 </button>
               </div>
             </div>
-          </div>
-          <div className="col-md-6 d-flex flex-column justify-content-center  ">
-            <h1 className=" h1 fs-3"> Individual User</h1>
-            <p className="fs-5  h1"> Individual User details</p>
-            <br></br>
-            <br></br>
-            <button className="btn btn-dark btng" style={{ maxWidth: "200px" }}>
-              Get Started
-            </button>
           </div>
         </div>
       </div>
