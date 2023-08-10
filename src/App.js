@@ -48,7 +48,7 @@ function App() {
     
             // https://web3auth.io/docs/sdk/pnp/web/modal/initialize#arguments
             const options = {
-                    clientId: 'BMwL8o7gYecCOQC57wcJk5ElQxlaFajjF_sTlS4iMeSM8ZA66xk0EZZWAgNAlZodVOkMyLxQvxZzHnJ7vGamc44',
+                    clientId: 'BGgyaJAk-dOSb6LCZtMzg9hM_VOJA2kSit8879I8kWCaT6Sd_cUz99tNn3uez1ndvetCbPNLU3wULmYEi-uVHsI',
                     web3AuthNetwork: 'testnet',
                     chainConfig,
                     // chainConfig: {

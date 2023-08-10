@@ -17,22 +17,13 @@ function Navbar(props) {
         <nav className="navbar">
           <span className="logo animate__animated animate__fadeInDown animate__delay-2s">
             <Link to="/">
-              {/* <Image src={logo} alt="logo" /> */}
               <h1 className="logo-h1">
                 LOGO
-                {/* UpToData */}
               </h1>
             </Link>
           </span>
           {props.userData.address ? (
             <>
-              <Link
-                //   target="_blank"
-                //   rel="noopener noreferrer"
-                style={{ textDecoration: "none" }}
-                to="/profile"
-                className="animate__animated animate__fadeInDown"
-              >
                 <button className="logged-in">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -52,7 +43,6 @@ function Navbar(props) {
                   </svg>
                   Account
                 </button>
-              </Link>
               <button
                 className="login-button animate__animated animate__fadeInDown"
                 id="logout"
