@@ -37,7 +37,7 @@ function IssuingAuthorityDashboard() {
     <>
        <div className="container-fluid mt-2 ia-details-container">
         <div className="row ia-details">
-          <div className="col-12 col-md-6 d-flex flex-column align-items-center ia-details-image">
+          <div className="col-12 col-md-6 d-flex flex-row align-items-center ia-details-image">
             <div className="rounded-circle overflow-hidden mb-2 border border-secondary" style={{ width: '140px', height: '140px' }}>
               <img src={user.profilePhoto} alt="User Profile" className="w-100 h-100 object-fit-cover" />
             </div>

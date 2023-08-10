@@ -160,8 +160,6 @@ function App() {
         }
 
   return (  
-    
-    
     <BrowserRouter>   
     <Navbar login={login} userData={userData} logout={logout} />
     <Routes>
