@@ -1,18 +1,18 @@
-import React, { useState } from "react";
+import React,{useState } from 'react'
 import { Link } from "react-router-dom";
 import '../styles/navbar.css'
 
 function Navbar(props) {
-
   const [isExpanded, setIsExpanded] = useState(false);
   const [address, setAddress] = useState("");
-  console.log(props.userData);
 
+  console.log("Navbar Page Log------",props.userData);
   function handleClick() {
     setIsExpanded(!isExpanded);
   }
+
   return (
-  <>
+    <>
       <header className="header">
         <nav className="navbar">
           <span className="logo animate__animated animate__fadeInDown animate__delay-2s">
@@ -24,18 +24,11 @@ function Navbar(props) {
               </h1>
             </Link>
           </span>
-          <ul
-            className={
-              isExpanded === false
-                ? "navmenu animate__animated animate__fadeInDown animate__delay-2s"
-                : "navmenu active animate__animated animate__fadeInDown animate__delay-2s"
-            }
-          >
-          </ul>
-          {/* {props.userData.address ? ( */}
-          {false ? (
+          {props.userData.address ? (
             <>
               <Link
+                //   target="_blank"
+                //   rel="noopener noreferrer"
                 style={{ textDecoration: "none" }}
                 to="/profile"
                 className="animate__animated animate__fadeInDown"
@@ -63,23 +56,26 @@ function Navbar(props) {
               <button
                 className="login-button animate__animated animate__fadeInDown"
                 id="logout"
-                // onClick={props.logout}
+                onClick={props.logout}
               >
                 Logout
               </button>
             </>
           ) : (
+            <>
             <button
               className="login-button animate__animated animate__fadeInDown animate__delay-2s"
-              // onClick={props.login}
+              onClick={props.login}
             >
               Login
             </button>
+            </>
           )}
         </nav>
       </header>
     </>
-  )
+  );
 }
+
 
 export default Navbar

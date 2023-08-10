@@ -15,9 +15,9 @@ function CopyofAlumni() {
 
   const [displaySection, setDisplaySection] = useState("certificates");
 
-  const handleSectionToggle = (section) => {
-    setDisplaySection(section);
-  };
+  // const handleSectionToggle = (section) => {
+  //   setDisplaySection(section);
+  // };
 
   const renderContent = () => {
     if (displaySection === "certificates") {
