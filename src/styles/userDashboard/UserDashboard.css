@@ -35,8 +35,11 @@
   
   .edit-profile-button {
     background-color: #007bff;
+    border-radius: 20px;
+    padding: 5px;
     color: white;
     border: none;
     cursor: pointer;
     margin-top: -40px;
+    width: 120px;
   }

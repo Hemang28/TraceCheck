@@ -1,8 +1,14 @@
 import React from 'react'
 import '../../styles/issuingAuthorityDashboard/IAUserRequest.css'
 import userImage from '../../assets/dummy-user.png'
+import { useNavigate } from 'react-router-dom';
 
 function IAUserRequest() {
+  const navigate = useNavigate();
+
+  const handleViewRequestButton = () => {
+    navigate("/verification");
+  };
   const userRequests = [
     {
       id: 'request001',
@@ -49,7 +55,7 @@ function IAUserRequest() {
              <div className="ia-field ia-request-date">{request.requestDate}</div>
              <div className="ia-field ia-request-type">{request.requestType}</div>
            </div>
-           <div className="ia-view-button">View</div>
+           <button className="ia-view-button" onClick={handleViewRequestButton}> View</button>
          </div>
         ))}
       </div>
