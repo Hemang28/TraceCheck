@@ -7,15 +7,7 @@ import VerifyUser from '../components/issuingAuthorityDashboard/VerifyUser';
 import '../styles/issuingAuthorityDashboard/IssuingAuthorityDashboard.css'
 import logo from '../assets/dummy-user.png'
 
-function IssuingAuthorityDashboard() {
-    const user = {
-        id: 'lampros000012',
-        name: 'Lampros Tech',
-        email: 'hr@lampros.tech',
-        walletaddress: '0x4655B0c408Ee7481597Afc26B6730e30593c368E',
-        profilePhoto: logo,
-      };
-  
+function IssuingAuthorityDashboard(props) {
       const [displaySection, setDisplaySection] = useState('certificates');
   
       const handleSectionToggle = (section) => {
@@ -35,22 +27,42 @@ function IssuingAuthorityDashboard() {
       };
   return (
     <>
-       <div className="container-fluid mt-2 ia-details-container">
-        <div className="row ia-details">
-          <div className="col-12 col-md-6 d-flex flex-row align-items-center ia-details-image">
+       <div className="container-fluid mt-2 IA-details-container">
+        <div className="row IA-details">
+          <div className="col-12 col-md-6 d-flex flex-column align-items-center user-details-image">
             <div className="rounded-circle overflow-hidden mb-2 border border-secondary" style={{ width: '140px', height: '140px' }}>
-              <img src={user.profilePhoto} alt="User Profile" className="w-100 h-100 object-fit-cover" />
+              <img src={ props.userData.profileImg
+                  ? props.userData.profileImg
+                  : logo
+              } alt="User Profile" className="w-100 h-100 object-fit-cover" />
             </div>
            
             <div>
-            <button className="ia-edit-profile-button">Edit Profile</button></div>
+            <button className="IA-edit-profile-button">Edit Profile</button></div>
           </div>
 
           <div className="col-12 col-md-6">
-            <h1>{user.name}</h1>
-            <h5>{user.email}</h5>
-            <h6>{user.id}</h6>
-            <p>{user.walletaddress}</p>
+            <h1>{props.userData.name ? (
+              props.userData.name
+            ) : props.userData.address.eoa ? (
+              <>
+                {props.userData.address.eoa.slice(0, 5) +
+                  "..." +
+                  props.userData.address.eoa.slice(
+                    props.userData.address.eoa.length - 4,
+                    props.userData.address.eoa.length
+                  )}
+              </>
+            ) : (
+              "Issuing Authority Name"
+            )}</h1>
+            <h5>{props.userData.email
+              ? props.userData.email
+              : "login to get email address"}</h5>
+            {/* <h6>{user.id}</h6> */}
+            <p>{props.userData.address.eoa
+              ? props.userData.address.eoa
+              : "login to get wallet address"}</p>
           </div>
         </div>
 

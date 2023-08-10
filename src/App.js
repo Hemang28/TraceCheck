@@ -12,7 +12,7 @@ import CopyAlumni from './components/RegistrationPage/CopyAlumni';
 import Navbar from './components/Navbar';
 import UserDashboard from './pages/UserDashboard';
 import { EthereumPrivateKeyProvider } from "@web3auth/ethereum-provider";
-
+import Footer from './components/Footer';
 import { Web3AuthModalPack} from '@safe-global/auth-kit'
 import { OpenloginAdapter } from '@web3auth/openlogin-adapter'
 import { WALLET_ADAPTERS } from '@web3auth/base'
@@ -108,8 +108,6 @@ function App() {
     
         const login = async () => {
             try{
-            console.log("Hello");
-            
             const userAddress = await web3AuthModalPack.signIn()
             console.log('SIGN IN RESPONSE: ', userAddress)
     
@@ -142,7 +140,6 @@ function App() {
     
         const logout = async () => {
             try{
-            
             const signOutInfo = await web3AuthModalPack.signOut();
             setUserData({
                 provider: "",
@@ -165,8 +162,8 @@ function App() {
     <Routes>
     <Route exact path="/" element={<LandingPage/>} />
     <Route path="/Issue-Certificate-Form" element={<IssueCertificateForm/>}></Route>
-    <Route path="/IA-Dashboard" element={<IssuingAuthorityDashboard/>}></Route>
-    <Route path="/User-Dashboard" element={<UserDashboard/>}></Route>
+    <Route path="/IA-Dashboard" element={<IssuingAuthorityDashboard userData={userData}/>}></Route>
+    <Route path="/User-Dashboard" element={<UserDashboard userData={userData} />}></Route>
     <Route path="/Add-Certificate" element={<AddCertificate />} />
     <Route path="/Request-Certificate" element={<RequestCertificate />} />
     <Route path="/landingpage" element={<LandingPage />} />
@@ -175,6 +172,7 @@ function App() {
     <Route path="/Registrationuser" element={<RegistrationUser />} />
     <Route path="/copyalumni" element={<CopyAlumni />} />
     </Routes>
+    <Footer/>
     </BrowserRouter>
   );
 }

@@ -3,8 +3,18 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import image from "../../assets/Getimg.jpg";
 import image2 from "../../assets/Getimage2.png";
 import "../../styles/Forms/Getstarted.css";
+import { useNavigate } from "react-router-dom";
 
 const GetStarted = () => {
+  const navigate = useNavigate();
+
+  const handleUserGetStarted = () => {
+    navigate("/User-Dashboard"); 
+  };
+
+  const handleIAGetStarted = () => {
+    navigate("/IA-Dashboard"); 
+  };
   return (
     <div>
       <div className="container ">
@@ -23,6 +33,7 @@ const GetStarted = () => {
                 <button
                   className="btn btn-dark btng"
                   style={{ maxWidth: "200px" }}
+                  onClick={handleIAGetStarted}
                 >
                   Get Started
                 </button>
@@ -43,6 +54,7 @@ const GetStarted = () => {
                 <button
                   className="btn btn-dark btng"
                   style={{ maxWidth: "200px" }}
+                  onClick={handleUserGetStarted}
                 >
                   Get Started
                 </button>
@@ -51,14 +63,6 @@ const GetStarted = () => {
           </div>
         </div>
       </div>
-
-      <footer className="bg-secondary text-center text-white">
-        <div className="container">
-          <p className="mb-5">
-            &copy; {new Date().getFullYear()} Your Company. All rights reserved.
-          </p>
-        </div>
-      </footer>
     </div>
   );
 };

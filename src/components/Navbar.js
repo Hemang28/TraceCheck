@@ -24,6 +24,11 @@ function Navbar(props) {
           </span>
           {props.userData.address ? (
             <>
+             <Link
+                style={{ textDecoration: "none" }}
+                to="/User-Dashboard"
+                className="animate__animated animate__fadeInDown"
+              >
                 <button className="logged-in">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -43,6 +48,7 @@ function Navbar(props) {
                   </svg>
                   Account
                 </button>
+                </Link>
               <button
                 className="login-button animate__animated animate__fadeInDown"
                 id="logout"
