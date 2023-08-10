@@ -1,7 +1,17 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import image from "../../assets/Getimg.jpg";
 
 const GetStarted = () => {
+  const navigate = useNavigate();
+
+  const handleIAGetStated = () => {
+    navigate("/IA-Dashboard");
+  };
+
+  const handleUserGetStarted = () => {
+    navigate("/User-Dashboard");
+  };
   return (
     <div>
       <div className="container mt-5 vh-100">
@@ -22,7 +32,7 @@ const GetStarted = () => {
             <p className="fs-5  h1">Issuing authority details</p>
             <br></br>
             <br></br>
-            <button className="btn btn-dark btng" style={{ maxWidth: "200px" }}>
+            <button className="btn btn-dark btng" style={{ maxWidth: "200px" }} onClick={handleIAGetStated}>
               Get Started
             </button>
           </div>
@@ -45,7 +55,7 @@ const GetStarted = () => {
             <p className="fs-5  h1"> Individual User details</p>
             <br></br>
             <br></br>
-            <button className="btn btn-dark btng" style={{ maxWidth: "200px" }}>
+            <button className="btn btn-dark btng" style={{ maxWidth: "200px" }} onClick={handleUserGetStarted}>
               Get Started
             </button>
           </div>

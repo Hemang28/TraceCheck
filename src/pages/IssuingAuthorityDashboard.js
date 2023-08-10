@@ -35,7 +35,7 @@ function IssuingAuthorityDashboard() {
       };
   return (
     <>
-       <div className="container-fluid mt-5 ia-details-container">
+       <div className="container-fluid mt-2 ia-details-container">
         <div className="row ia-details">
           <div className="col-12 col-md-6 d-flex flex-column align-items-center ia-details-image">
             <div className="rounded-circle overflow-hidden mb-2 border border-secondary" style={{ width: '140px', height: '140px' }}>
@@ -56,7 +56,7 @@ function IssuingAuthorityDashboard() {
 
       </div>
 
-      <div className="container" style={{ marginLeft: '0px' }}>
+      <div className="container" style={{ marginLeft: '-320px', marginTop:'0px' }}>
         <ul className="nav nav-tabs">
           <li className="nav-item">
             <button

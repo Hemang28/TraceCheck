@@ -1,13 +1,19 @@
 import React, { useEffect, useState } from "react";
-import imageL from '../../assets/Landing.jpeg'
+import { useNavigate } from "react-router-dom";
+import imageL from '../../assets/Landingimg.jpeg'
 import '../../styles/Forms/Landing.css'
 
 const App = () => {
+  const navigate = useNavigate();
   const [showContent, setShowContent] = useState(false);
 
   useEffect(() => {
     setShowContent(true);
   }, []);
+
+  const handleGetStarted = () => {
+    navigate("/getstarted");
+  };
 
   return (
     <div>
@@ -38,7 +44,7 @@ const App = () => {
                 <h1 className={`  h1 fw-bold ${showContent ? "fade-in" : ""}`}>
                   TRACECHECK
                 </h1>
-                <button className="btn btn-dark btng">Get Started</button>
+                <button className="btn btn-dark btng" onClick={handleGetStarted}>Get Started</button>
               </div>
             </div>
           </div>
