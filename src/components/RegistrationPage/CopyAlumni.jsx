@@ -54,28 +54,24 @@ function CopyofAlumni() {
 
       <div className="container mt-5">
         <div className="row">
-          <div className="col-md-6"></div>
-          <div className="col-md-6">
-            <div className="certificate-section">
-              <h1>Certificates</h1>
-              <div className="row">
-                {certificates.map((certificate, index) => (
-                  <div key={index} className="col-md-4 mb-3">
-                    <div className="certificate-card">
-                      <img
-                        src={certificate.image}
-                        alt={certificate.title}
-                        className="certificate-img img-fluid"
-                      />
-                      <p className="certificate-title">{certificate.title}</p>
-                    </div>
-                  </div>
-                ))}
+          <h1> My Certificates</h1>
+          <div className="row">
+            {certificates.map((certificate, index) => (
+              <div key={index} className="col-md-4 mb-3">
+                <div className="certificate-card">
+                  <img
+                    src={certificate.image}
+                    alt={certificate.title}
+                    className="certificate-img img-fluid"
+                  />
+                  <p className="certificate-title">{certificate.title}</p>
+                </div>
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
+
       <div
         className="container"
         style={{ marginLeft: "0px", marginTop: "0px" }}
