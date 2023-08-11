@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import imageL from '../../assets/Landingimg.jpeg'
-import '../../styles/Forms/Landing.css'
+import imageL from "../../assets/Landingimg.jpeg";
+import "../../styles/Forms/Landing.css";
 
 const App = () => {
   const navigate = useNavigate();
@@ -36,7 +36,7 @@ const App = () => {
             <div className="col-md-6 d-flex flex-column justify-content-center align-items-start ">
               <div className={` h2  ${showContent ? "fade-in" : ""}`}>
                 <br />
-                <h2 className=" fs-3">
+                <h2 className=" fs-3 ">
                   Empowering trust: Decentralized background verification app
                   with blockchain security.
                 </h2>
@@ -44,7 +44,12 @@ const App = () => {
                 <h1 className={`  h1 fw-bold ${showContent ? "fade-in" : ""}`}>
                   TRACECHECK
                 </h1>
-                <button className="btn btn-dark btng" onClick={handleGetStarted}>Get Started</button>
+                <button
+                  className="btn btn-dark btng"
+                  onClick={handleGetStarted}
+                >
+                  Get Started
+                </button>
               </div>
             </div>
           </div>

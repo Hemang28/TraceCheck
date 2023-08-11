@@ -68,6 +68,7 @@ function IssueCertificate() {
           </button>
         </div>
 
+
         {certificates.map((certificate) => (
           <div key={certificate.id} className="col-12 col-md-6 col-lg-4 mb-4">
             <div className="card ic-card-container">

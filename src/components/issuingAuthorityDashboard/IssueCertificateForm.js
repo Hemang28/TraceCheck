@@ -37,10 +37,10 @@ function IssueCertificateForm() {
   };
 
   return (
-    <div className="container mt-5 mb-5">
+    <div className="container mt-5 mb-2">
       <div className="row">
-        <div className="col-md-8 offset-md-2">
-        <div className="form-container">
+        <div className="col-md-12 offset-md-.5">
+        <div className="form-container p-4 card">
             <h2 className="form-heading">Issue Certificate</h2>
           <form onSubmit={handleIssueCertificate}>
             <div className="form-group">
@@ -145,6 +145,7 @@ function IssueCertificateForm() {
         </div>
       </div>
     </div>
+    
   );
 }
 

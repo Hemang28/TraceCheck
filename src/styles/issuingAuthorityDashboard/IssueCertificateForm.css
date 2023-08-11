@@ -4,12 +4,13 @@
   }
   
   .form-container {
-    border: 1px solid #ccc;
-    padding: 20px;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: column;
-  }
+   
+      width: 100%; /* Adjust the width as needed */
+      max-width: 600px; /* Limit the maximum width if desired */
+      margin: 0 auto; /* Center the form horizontally */
+    }
+    
+  
   
   .form-heading {
     margin-bottom: 20px;
@@ -56,4 +57,7 @@
     background-color: #0056b3;
   }
   
-  
+  /* For example, adjust the width of the input fields */
+.form-control {
+  width: 100%; /* Adjust the width as needed */
+}
