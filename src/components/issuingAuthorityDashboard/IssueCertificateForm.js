@@ -37,7 +37,7 @@ function IssueCertificateForm() {
   };
 
   return (
-    <div className="container mt-5 mb-2">
+    <div className="container mt-5 ">
       <div className="row">
         <div className="col-md-12 offset-md-.5">
         <div className="form-container p-4 card">
