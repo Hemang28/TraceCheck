@@ -7,7 +7,7 @@ function Footer() {
         <footer className="bg-secondary text-center text-white pt-6">
         <div className="container">
           <p className="mb-0">
-            &copy; {new Date().getFullYear()} Your Company. All rights reserved.
+            &copy; {new Date().getFullYear()} TraceCheck. All rights reserved.
           </p>
         </div>
       </footer>

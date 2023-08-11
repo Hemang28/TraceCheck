@@ -36,14 +36,14 @@ const App = () => {
             <div className="col-md-6 d-flex flex-column justify-content-center align-items-start ">
               <div className={` h2  ${showContent ? "fade-in" : ""}`}>
                 <br />
-                <h2 className=" fs-3">
-                  Empowering trust: Decentralized background verification app
-                  with blockchain security.
-                </h2>
+                <h1>TraceCheck</h1>
+                <h5 style={{textAlign:"justify"}}>
+                Elevating Trust, One Verified Credential at a Time
+                Blockchain Security for Transparent, Reliable Background Checks
+                Empower Your Verification Process with TRACECHECK's Decentralized Solutions
+                </h5>
                 <br></br>
-                <h1 className={`  h1 fw-bold ${showContent ? "fade-in" : ""}`}>
-                  TRACECHECK
-                </h1>
+                
                 <button className="btn btn-dark btng" onClick={handleGetStarted}>Get Started</button>
               </div>
             </div>

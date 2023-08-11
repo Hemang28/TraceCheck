@@ -6,13 +6,13 @@ contract Register {
         string name;
         string email;
         string profileImage;
-        uint userId;
+        // uint userId;
     }
 
     struct IssuingAuthority {
         string name;
         string email;
-        uint userId;
+        // uint userId;
     }
 
     mapping(address => User) private usersMapping;
@@ -30,8 +30,8 @@ contract Register {
         _;
     }
 
-    function setUser(string memory _name, string memory _email, string memory _profileImage, uint _userId) public onlyNewUser {
-        usersMapping[msg.sender] = User(_name, _email, _profileImage, _userId);
+    function setUser(string memory _name, string memory _email, string memory _profileImage) public onlyNewUser {
+        usersMapping[msg.sender] = User(_name, _email, _profileImage);
         isUserAdded[msg.sender] = true;
     }
 
@@ -39,8 +39,8 @@ contract Register {
         return usersMapping[_address];
     }
 
-    function setIssuingAuthority(string memory _name, string memory _email, uint _userId) public onlyNewIssuingAuthority {
-        issuingAuthorityMapping[msg.sender] = IssuingAuthority(_name, _email, _userId);
+    function setIssuingAuthority(string memory _name, string memory _email) public onlyNewIssuingAuthority {
+        issuingAuthorityMapping[msg.sender] = IssuingAuthority(_name, _email);
         isIssuingAuthorityAdded[msg.sender] = true;
     }
 

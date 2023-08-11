@@ -1,6 +1,7 @@
 import React,{useState } from 'react'
 import { Link } from "react-router-dom";
 import '../styles/navbar.css'
+import logo from '../assets/logo.png'
 
 function Navbar(props) {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -13,17 +14,15 @@ function Navbar(props) {
 
   return (
     <>
-      <header className="header">
+      <header className="header" style={{marginBottom:"30px"}}>
         <nav className="navbar">
           <span className="logo animate__animated animate__fadeInDown animate__delay-2s">
-            <Link to="/">
-              <h1 className="logo-h1">
-                LOGO
-              </h1>
-            </Link>
+          <Link to="/">
+            <img src={logo} height="90px" width="220px" alt="logoImg" />
+          </Link>
           </span>
           {props.userData.address ? (
-            <>
+            <>  
              <Link
                 style={{ textDecoration: "none" }}
                 to="/User-Dashboard"
@@ -49,6 +48,15 @@ function Navbar(props) {
                   Account
                 </button>
                 </Link>
+
+                <button
+                className="login-button animate__animated animate__fadeInDown"
+                id="logout"
+                onClick={props.registration}
+              >
+                Registration
+              </button>
+
               <button
                 className="login-button animate__animated animate__fadeInDown"
                 id="logout"

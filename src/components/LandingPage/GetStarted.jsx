@@ -29,10 +29,10 @@ const GetStarted = () => {
               />
               <div className="card-body">
                 <h1 className="h1 fs-3">Issuing authority</h1>
-                <p className="fs-5 h1">Issuing authority details</p>
+                <p className="fs-5 h1" style={{textAlign:'justify'}}>Welcome to TraceCheck's Issuing Authority platform. Your role is pivotal in establishing a more transparent and secure educational and professional landscape.</p>
                 <button
                   className="btn btn-dark btng"
-                  style={{ maxWidth: "200px" }}
+                  style={{ maxWidth: "200px", marginTop:"10px" }}
                   onClick={handleIAGetStarted}
                 >
                   Get Started
@@ -50,10 +50,10 @@ const GetStarted = () => {
               />
               <div className="card-body">
                 <h1 className="h1 fs-3">Individual User</h1>
-                <p className="fs-5 h1">Individual User details</p>
+                <p className="fs-5 h1">Welcome to TraceCheck, where your achievements are more than just pieces of paper – they're the stepping stones to your future</p>
                 <button
                   className="btn btn-dark btng"
-                  style={{ maxWidth: "200px" }}
+                  style={{ maxWidth: "200px", marginTop:"10px" }}
                   onClick={handleUserGetStarted}
                 >
                   Get Started

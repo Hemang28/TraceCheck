@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter, Route, Routes  } from 'react-router-dom';
+import { BrowserRouter, Route, Routes} from 'react-router-dom';
 import IssuingAuthorityDashboard from './pages/IssuingAuthorityDashboard';
 import AddCertificate from './components/userDashboard/AddCertificate';
 import IssueCertificateForm from './components/issuingAuthorityDashboard/IssueCertificateForm';
@@ -18,9 +18,13 @@ import { OpenloginAdapter } from '@web3auth/openlogin-adapter'
 import { WALLET_ADAPTERS } from '@web3auth/base'
 import {ethers} from 'ethers';
 import React,{ useEffect, useState } from 'react'
+import { GelatoRelayPack } from '@safe-global/relay-kit';
+import Safe, {EthersAdapter, getSafeContract, SafeFactory} from '@safe-global/protocol-kit';
+import Registrationabi from '../src/contracts/artifacts/Registrationabi.json'
+import { MetaTransactionData, MetaTransactionOptions, OperationType } from '@safe-global/safe-core-sdk-types';
+const contractAddress = "0x08FcBDE153FE5Ae7E05c6d66dab83dbE6A33F29b";
 
 function App() {
-
   const [web3AuthModalPack, setWeb3AuthModalPack] = useState();
   const [userData, setUserData] = useState({
     provider: "",
@@ -31,11 +35,6 @@ function App() {
     name: "",
     email: "",
   });
-
-    // useEffect(() => {
-    //   // This effect runs whenever myValue changes
-    //   console.log('Updated value:', userData);
-    // }, [userData]);
       useEffect(() => {
         (async () => {
 
@@ -156,9 +155,144 @@ function App() {
             }
         }
 
+        const deploySafe = async () => {
+          try {
+            const RPC_URL = "https://goerli.base.org";
+            const provider = new ethers.providers.JsonRpcProvider(RPC_URL);
+            console.log(process.env.OWNER_1_PRIVATE_KEY);
+            // const signer = userData.signer;
+            const owner1Signer = new ethers.Wallet(
+              "0x1910812769a4d5a6b96940b67a5a011a99de8d235b078cdfa7e030641d189eab",
+              provider
+            );
+            console.log(owner1Signer);
+            console.log(userData.address);
+      
+            const ethAdapter = new EthersAdapter({
+              ethers,
+              signerOrProvider: owner1Signer,
+            });
+            console.log(ethAdapter);
+      
+            const safeFactory = await SafeFactory.create({ ethAdapter });
+            console.log(safeFactory);
+      
+            const owners = [`${userData.address.eoa}`];
+            const threshold = 1;
+      
+            const safeAccountConfig = {
+              owners,
+              threshold,
+              // ...
+            };
+      
+            const safeSdk = await safeFactory.deploySafe({
+              safeAccountConfig,
+            });
+
+            console.log(safeSdk);
+            const newSafeAddress = await safeSdk.getAddress();
+            console.log("Your Safe has been deployed:");
+            console.log(`https://goerli.etherscan.io/address/${newSafeAddress}`);
+            console.log(`https://app.safe.global/gor:${newSafeAddress}`);
+            console.log(newSafeAddress);
+          } catch (err) {
+            console.log(err);
+          }
+        };
+
+        const registration = async () =>{
+          const RPC_URL='https://base-goerli.public.blastapi.io'
+          const provider = new ethers.providers.JsonRpcProvider(RPC_URL)
+          // const signer = new ethers.Wallet(process.env.OWNER_1_PRIVATE_KEY, provider)
+          // const safeAddress = '0x4655B0c408Ee7481597Afc26B6730e30593c368E' 
+          const chainId = 84531
+          const gasLimit = '100000'
+
+          const GELATO_RELAY_API_KEY = "8H_kZ7L9r75FLguQmTkc22q5l8n3_B_yn9Bk1w63Gmc_";
+
+          const options = {
+            gasLimit: ethers.BigNumber.from(gasLimit),
+            isSponsored: true,
+          };
+          // console.log(userData.signer);
+          const ethAdapter = new EthersAdapter({
+            ethers,
+            signerOrProvider: userData.signer,
+          });
+          const safeAddress = userData.address.safes[0];
+          console.log(safeAddress);
+          // const safeAddress ="0xd3FfEA89eCd34dDFd792c0A3542dc68355d0F303";
+          console.log(safeAddress);
+          const safeSDK = await Safe.create({
+            ethAdapter,
+            safeAddress,
+          });
+          console.log(safeSDK.getAddress());
+
+          const relayAdapter = new GelatoRelayPack(GELATO_RELAY_API_KEY);
+
+          console.log(relayAdapter);
+          // encode data
+            const contract = new ethers.Contract(
+              contractAddress,
+              Registrationabi.abi,
+              userData.signer
+          );
+
+          const functionName = "setUser";
+
+          const functionData =  contract.interface.encodeFunctionData(functionName, [
+            userData.name,userData.email,userData.profileImg
+          ]);
+
+          console.log(functionData);
+      
+          const safeTransactionData = {
+            to: "0x08FcBDE153FE5Ae7E05c6d66dab83dbE6A33F29b",
+            data: functionData,
+            value: 0,
+          };
+
+          console.log(safeTransactionData);
+          const safeTransaction = await safeSDK.createTransaction({
+            safeTransactionData,
+          });
+          console.log(safeTransaction);
+      
+          const signedSafeTx = await safeSDK.signTransaction(safeTransaction);
+      
+          // const encodedTx = safeSDK
+          //   .getContractManager()
+          //   .safeContract.encode("execTransaction", [
+          //     signedSafeTx.data.to,
+          //     signedSafeTx.data.value,
+          //     signedSafeTx.data.data,
+          //     signedSafeTx.data.operation,
+          //     signedSafeTx.data.safeTxGas,
+          //     signedSafeTx.data.baseGas,
+          //     signedSafeTx.data.gasPrice,
+          //     signedSafeTx.data.gasToken,
+          //     signedSafeTx.data.refundReceiver,
+          //     signedSafeTx.encodedSignatures(),
+          //   ]);
+
+          //   const relayTransaction = {
+          //     target: safeAddress,
+          //     encodedTransaction: encodedTx,
+          //     chainId,
+          //     options,
+          //   };
+          //   const response = await relayAdapter.relayTransaction(relayTransaction);
+        
+          //   console.log(
+          //     `Relay Transaction Task ID: https://relay.gelato.digital/tasks/status/${response.taskId}`
+          //   );
+        }
+
   return (  
     <BrowserRouter>   
-    <Navbar login={login} userData={userData} logout={logout} />
+    <Navbar login={login} userData={userData} logout={logout} registration={registration}/>
     <Routes>
     <Route exact path="/" element={<LandingPage/>} />
     <Route path="/Issue-Certificate-Form" element={<IssueCertificateForm/>}></Route>
