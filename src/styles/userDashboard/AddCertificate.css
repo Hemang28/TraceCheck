@@ -2,10 +2,11 @@
     max-width: 500px;
     margin: 30px auto;
     padding: 20px;
-    background-color: aliceblue;
+    background-color:  #fbded8;
     border-radius: 15px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
+  
   
   .add-certificate-form h3 {
     margin-bottom: 20px;

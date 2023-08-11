@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import UserCertificates from "../userDashboard/UserCertificates";
 import UserRequests from "../userDashboard/UserRequests";
-import '../../styles/userDashboard/UserDashboard.css'
+import "../../styles/userDashboard/UserDashboard.css";
 
 function CopyofAlumni() {
   const alumni = {
@@ -14,10 +14,6 @@ function CopyofAlumni() {
   const certificates = [];
 
   const [displaySection, setDisplaySection] = useState("certificates");
-
-  // const handleSectionToggle = (section) => {
-  //   setDisplaySection(section);
-  // };
 
   const renderContent = () => {
     if (displaySection === "certificates") {

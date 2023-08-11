@@ -1,6 +1,6 @@
 // VerificationReq.jsx
 import React, { useState } from "react";
-import '../../styles/Forms/Verification.css'
+import "../../styles/Forms/Verification.css";
 
 function VerificationReq() {
   const [userId, setUserId] = useState("");
@@ -25,12 +25,12 @@ function VerificationReq() {
   return (
     <div>
       <div className="App d-flex align-items-center justify-content-center">
-        <div className="container mt-5">
-          <div className="form-container p-4">
+        <div className="container mt-5 ">
+          <div className="form-container p-4 card">
             <h2 className="mb-4 text-center">Verification Request Form</h2>
             <form onSubmit={handleSubmit}>
               <div className="mb-3">
-                <label className="form-label">User ID:</label>
+                <label className="form-label ">User ID:</label>
                 <input
                   type="text"
                   className="form-control"

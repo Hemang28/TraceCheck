@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import imageL from '../../assets/Landingimg.jpeg'
-import '../../styles/Forms/Landing.css'
+import imageL from "../../assets/Landingimg.jpeg";
+import "../../styles/Forms/Landing.css";
 
 const App = () => {
   const navigate = useNavigate();
