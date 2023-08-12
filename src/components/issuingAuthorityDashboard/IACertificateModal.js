@@ -1,7 +1,25 @@
 import React from 'react'
 import '../../styles/issuingAuthorityDashboard/IACertificateModal.css'
+import { EAS, Offchain, SchemaEncoder, SchemaRegistry } from "@ethereum-attestation-service/eas-sdk";
+import { ethers } from 'ethers';
 
 function IACertificateModal({ certificate, onClose }) {
+   const EASContractAddress = "0xC2679fBD37d54388Ce493F1DB75320D236e1815e"; // Sepolia v0.26
+
+const eas = new EAS(EASContractAddress);
+
+// Gets a default provider (in production use something else like infura/alchemy)
+const provider = ethers.providers.getDefaultProvider(
+  "sepolia"
+);
+
+// Connects an ethers style provider/signingProvider to perform read/write functions.
+// MUST be a signer to do write operations!
+eas.connect(provider);
+
+
+
+
   return (
     <div className="modal-backdrop">
     <div className="modal-overlay">

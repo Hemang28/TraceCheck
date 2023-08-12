@@ -3,6 +3,7 @@ import '../../styles/issuingAuthorityDashboard/IAUserRequest.css'
 import userImage from '../../assets/dummy-user.png'
 import { useNavigate } from 'react-router-dom';
 
+
 function IAUserRequest() {
   const navigate = useNavigate();
 

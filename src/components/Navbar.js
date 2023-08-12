@@ -49,14 +49,6 @@ function Navbar(props) {
                 </button>
                 </Link>
 
-                <button
-                className="login-button animate__animated animate__fadeInDown"
-                id="logout"
-                onClick={props.registration}
-              >
-                Registration
-              </button>
-
               <button
                 className="login-button animate__animated animate__fadeInDown"
                 id="logout"
