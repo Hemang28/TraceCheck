@@ -44,7 +44,7 @@ function App() {
                         rpcTarget: `https://rpc.ankr.com/eth_goerli`,
           }
             const options = {
-                    clientId: 'BH3fzA6nCRw-hoE8ZjyQgwBnNHwDVcz_CH0IUscMprn7m55KACsv9XNqu-Ptvsl9XunRcf3Lj0xGzdlJZ9JlaYo',
+                    clientId: 'BMlPdry8FpY80fT_cbuDJ8mjAM62Bo_6HnZxvfAE6ZaNLsEQaH2Nr8iqFap3uZCufIm5xfKWBZYklVjfCUr3vS0',
                     web3AuthNetwork: 'testnet',
                     chainConfig,
                     uiConfig: {
