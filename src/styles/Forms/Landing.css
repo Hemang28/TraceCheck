@@ -18,7 +18,26 @@
   .fade-in {
     animation: fadeIn 1s forwards;
   }
+
+  .sponsor {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
   
+  .sponsor-title {
+    font-size: 1.5rem;
+    color: #333;
+  }
+  
+  .sponsor-description {
+    color: #666;
+    text-align: justify;
+  }
+
   @keyframes slideInLeft {
     from {
       transform: translateX(-100%);
