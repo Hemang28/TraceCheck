@@ -40,7 +40,7 @@ function App() {
 
           const chainConfig ={
             chainNamespace: "eip155",
-                        chainId: "5",
+                        chainId: "0x5",
                         rpcTarget: `https://rpc.ankr.com/eth_goerli`,
           }
             const options = {
@@ -189,95 +189,95 @@ function App() {
         //   }
         // };
 
-        const registration = async () =>{
+        // const registration = async () =>{
 
-          const RPC_URL = "https://goerli.base.org";
-          const provider = new ethers.providers.JsonRpcProvider(RPC_URL);
-          const signer = new ethers.Wallet("0x1910812769a4d5a6b96940b67a5a011a99de8d235b078cdfa7e030641d189eab")
-          const safeAddress = userData.address.safes[0];
-          const chainId = 84531
-          const gasLimit = '100000'
+        //   const RPC_URL = "https://goerli.base.org";
+        //   const provider = new ethers.providers.JsonRpcProvider(RPC_URL);
+        //   const signer = new ethers.Wallet("0x1910812769a4d5a6b96940b67a5a011a99de8d235b078cdfa7e030641d189eab")
+        //   const safeAddress = userData.address.safes[0];
+        //   const chainId = 84531
+        //   const gasLimit = '100000'
 
-          const GELATO_RELAY_API_KEY = "8H_kZ7L9r75FLguQmTkc22q5l8n3_B_yn9Bk1w63Gmc_";
+        //   const GELATO_RELAY_API_KEY = "8H_kZ7L9r75FLguQmTkc22q5l8n3_B_yn9Bk1w63Gmc_";
 
-          const options = {
-            gasLimit,
-            isSponsored: true,
-          };
+        //   const options = {
+        //     gasLimit,
+        //     isSponsored: true,
+        //   };
        
-          const ethAdapter = new EthersAdapter({
-            ethers,
-            signerOrProvider: userData.signer,
-          });
+        //   const ethAdapter = new EthersAdapter({
+        //     ethers,
+        //     signerOrProvider: userData.signer,
+        //   });
 
-          console.log(safeAddress);
-          const safeSDK = await Safe.create({
-            ethAdapter,
-            safeAddress,
-          });
-          const relayAdapter = new GelatoRelayPack(GELATO_RELAY_API_KEY);
+        //   console.log(safeAddress);
+        //   const safeSDK = await Safe.create({
+        //     ethAdapter,
+        //     safeAddress,
+        //   });
+        //   const relayAdapter = new GelatoRelayPack(GELATO_RELAY_API_KEY);
 
-          console.log(Registrationabi.abi);
-            const contract = new ethers.Contract(
-              contractAddress,
-              Registrationabi.abi,
-              userData.signer
-          );
+        //   console.log(Registrationabi.abi);
+        //     const contract = new ethers.Contract(
+        //       contractAddress,
+        //       Registrationabi.abi,
+        //       userData.signer
+        //   );
 
-          const functionName = "setUser";
+        //   const functionName = "setUser";
 
-          const functionData =  contract.interface.encodeFunctionData(functionName, [
-            userData.name,userData.email,userData.profileImg
-          ]);
+        //   const functionData =  contract.interface.encodeFunctionData(functionName, [
+        //     userData.name,userData.email,userData.profileImg
+        //   ]);
 
-          console.log(functionData);
+        //   console.log(functionData);
       
-          const safeTransactionData = {
-            to: "0x08FcBDE153FE5Ae7E05c6d66dab83dbE6A33F29b",
-            data: functionData,
-            value: 0,
-          };
+        //   const safeTransactionData = {
+        //     to: "0x08FcBDE153FE5Ae7E05c6d66dab83dbE6A33F29b",
+        //     data: functionData,
+        //     value: 0,
+        //   };
 
-          console.log(safeTransactionData);
-          const safeTransaction = await safeSDK.createTransaction({
-            safeTransactionData,
-          });
-          console.log(safeTransaction);
+        //   console.log(safeTransactionData);
+        //   const safeTransaction = await safeSDK.createTransaction({
+        //     safeTransactionData,
+        //   });
+        //   console.log(safeTransaction);
       
-          const signedSafeTx = await safeSDK.signTransaction(safeTransaction);
+        //   const signedSafeTx = await safeSDK.signTransaction(safeTransaction);
 
-          const safeSingletonContract = await getSafeContract({
-            ethAdapter,
-            safeVersion: await safeSDK.getContractVersion()
-          })
+        //   const safeSingletonContract = await getSafeContract({
+        //     ethAdapter,
+        //     safeVersion: await safeSDK.getContractVersion()
+        //   })
       
-          const encodedTx = safeSDK
-            .getContractManager()
-            .safeContract.encode("execTransaction", [
-              signedSafeTx.data.to,
-              signedSafeTx.data.value,
-              signedSafeTx.data.data,
-              signedSafeTx.data.operation,
-              signedSafeTx.data.safeTxGas,
-              signedSafeTx.data.baseGas,
-              signedSafeTx.data.gasPrice,
-              signedSafeTx.data.gasToken,
-              signedSafeTx.data.refundReceiver,
-              signedSafeTx.encodedSignatures(),
-            ]);
+        //   const encodedTx = safeSDK
+        //     .getContractManager()
+        //     .safeContract.encode("execTransaction", [
+        //       signedSafeTx.data.to,
+        //       signedSafeTx.data.value,
+        //       signedSafeTx.data.data,
+        //       signedSafeTx.data.operation,
+        //       signedSafeTx.data.safeTxGas,
+        //       signedSafeTx.data.baseGas,
+        //       signedSafeTx.data.gasPrice,
+        //       signedSafeTx.data.gasToken,
+        //       signedSafeTx.data.refundReceiver,
+        //       signedSafeTx.encodedSignatures(),
+        //     ]);
 
-            const relayTransaction = {
-              target: safeAddress,
-              encodedTransaction: encodedTx,
-              chainId,
-              options,
-            };
-            const response = await relayAdapter.relayTransaction(relayTransaction);
+        //     const relayTransaction = {
+        //       target: safeAddress,
+        //       encodedTransaction: encodedTx,
+        //       chainId,
+        //       options,
+        //     };
+        //     const response = await relayAdapter.relayTransaction(relayTransaction);
         
-            console.log(
-              `Relay Transaction Task ID: https://relay.gelato.digital/tasks/status/${response.taskId}`
-            );
-        }
+        //     console.log(
+        //       `Relay Transaction Task ID: https://relay.gelato.digital/tasks/status/${response.taskId}`
+        //     );
+        // }
 
   return (  
     <BrowserRouter>   
@@ -287,7 +287,7 @@ function App() {
           path="/*"
           element={
             <>
-              <Navbar userData={userData} login={login} logout={logout} registration={registration} />
+              <Navbar userData={userData} login={login} logout={logout}/>
               <Routes>
     <Route path="/Issue-Certificate-Form" element={<IssueCertificateForm/>}></Route>
     <Route path="/IA-Dashboard" element={<IssuingAuthorityDashboard userData={userData}/>}></Route>
@@ -295,7 +295,7 @@ function App() {
     <Route path="/Add-Certificate" element={<AddCertificate />} />
     <Route path="/Request-Certificate" element={<RequestCertificate />} />
     <Route path="/landingpage" element={<LandingPage />} />
-    <Route path="/getstarted" element={<GetStarted userData={userData} login={login} logout={logout} registration={registration}/>} />
+    <Route path="/getstarted" element={<GetStarted userData={userData} login={login} logout={logout}/>} />
     <Route path="/verification" element={<VerificationReq />} />
     <Route path="/Registrationuser" element={<RegistrationUser />} />
     <Route path="/copyalumni" element={<CopyAlumni />} />
