@@ -20,15 +20,12 @@ function RegisterUserCode() {
 
     useEffect(() => {
     ;(async () => {
-
-        // https://web3auth.io/docs/sdk/pnp/web/modal/initialize#arguments
         const options = {
                 clientId: 'BH7EeJsUOaMe4gCbX3AHEV51Lt-eOuX3ZgB6Vqx8DKrN_XQN3o8O7o3lvJfHo77XaR93cH5qPXTKxyUDFU7xFXM',
                 web3AuthNetwork: 'testnet',
                 chainConfig: {
                     chainNamespace: "eip155",
                     chainId: "0x5",
-                    // https://chainlist.org/
                     rpcTarget: `https://rpc.ankr.com/eth_goerli`,
                 },
                 uiConfig: {
@@ -37,7 +34,6 @@ function RegisterUserCode() {
                 }
         }
 
-        // https://web3auth.io/docs/sdk/pnp/web/modal/initialize#configuring-adapters
         const modalConfig = {
             [WALLET_ADAPTERS.TORUS_EVM]: {
             label: 'torus',
@@ -50,7 +46,6 @@ function RegisterUserCode() {
         }
     }
 
-    // https://web3auth.io/docs/sdk/pnp/web/modal/whitelabel#whitelabeling-while-modal-initialization
     const openloginAdapter = new OpenloginAdapter({
         loginSettings: {
         mfaLevel: 'mandatory'
@@ -66,8 +61,6 @@ function RegisterUserCode() {
     const web3AuthConfig = {
         txServiceUrl: 'https://safe-transaction-goerli.safe.global'
     }
-
-    // Instantiate and initialize the pack
         const web3AuthModalPack = new Web3AuthModalPack(web3AuthConfig)
         await web3AuthModalPack.init({ options, adapters: [openloginAdapter], modalConfig })
 

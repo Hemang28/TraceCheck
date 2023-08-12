@@ -32,11 +32,6 @@ function IACertificateModal({ certificate, onClose }) {
             <strong>Issue Date:</strong>{' '}
             <span className="iacm-field-value">{certificate.issueDate}</span>
           </p>
-    
-          {/* <div className="iacm-modal-buttons">
-            <button className="iacm-btn iacm-btn-primary">Request Verification</button>
-            <button className="iacm-btn iacm-btn-primary">Share</button>
-          </div> */}
         </div>
       </div>
     </div>

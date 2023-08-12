@@ -5,15 +5,24 @@ import image2 from "../../assets/Getimage2.png";
 import "../../styles/Forms/Getstarted.css";
 import { useNavigate } from "react-router-dom";
 
-const GetStarted = () => {
+const GetStarted = (props) => {
+  console.log("Get Started Page--------",props.userData);
   const navigate = useNavigate();
 
   const handleUserGetStarted = () => {
-    navigate("/User-Dashboard"); 
+    if (props.userData && props.userData.address) {
+      navigate("/User-Dashboard");
+    } else {
+      alert("Kindly log in to access the platform")
+    } 
   };
 
   const handleIAGetStarted = () => {
-    navigate("/IA-Dashboard"); 
+    if (props.userData && props.userData.address) {
+      navigate("/IA-Dashboard"); 
+    } else {
+      alert("Kindly log in to access the platform")
+    } 
   };
   return (
     <div>
@@ -46,7 +55,7 @@ const GetStarted = () => {
                 src={image2}
                 alt="Image"
                 className="card-img-top"
-                style={{ maxWidth: "100%" }} // Adjust the image width
+                style={{ maxWidth: "100%" }} 
               />
               <div className="card-body">
                 <h1 className="h1 fs-3">Individual User</h1>

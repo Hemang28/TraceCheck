@@ -8,21 +8,12 @@ function UserRequests() {
   const requestsData = [
     {
       id: 1,
-      title: 'Request 1',
-      issuingAuthority: 'Authority 1',
-      issuingAuthorityEmail: 'authority1@gmail.com',
+      title: 'SSC Certificate',
+      issuingAuthority: 'Tech Academy',
+      issuingAuthorityEmail: 'techacademy181@gmail.com',
       requestDate: '2023-08-01',
-      requestType: 'Type 1',
+      requestType: 'Verification',
       status: 'Pending',
-    },
-    {
-      id: 2,
-      title: 'Request 2',
-      issuingAuthority: 'Authority 2',
-      issuingAuthorityEmail: 'authority2@gmail.com',
-      requestDate: '2023-08-02',
-      requestType: 'Type 2',
-      status: 'Accepted',
     },
   ];
 
@@ -44,8 +35,8 @@ function UserRequests() {
         <div className="request-type-filter">
           <select id="filterType" value={filterType} onChange={handleFilterChange}>
             <option value="">Request Type</option>
-            <option value="Type 1">Type 1</option>
-            <option value="Type 2">Type 2</option>
+            <option value="Verification">Verification</option>
+            <option value="Issuing Certificate">Issuing Certificate</option>
           
           </select>
           <button className="bg-primary request-certificate-button" onClick={handleRequestCertificateClick}>+ Request Certificate</button>

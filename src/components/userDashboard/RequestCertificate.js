@@ -4,16 +4,16 @@ import '../../styles/userDashboard/RequestCertificate.css'
 function RequestCertificate() {
 
     const issuingAuthoritiesData = [
-        { id: 1, name: 'Authority 1', email: 'authority1@gmail.com' },
-        { id: 2, name: 'Authority 2', email: 'authority2@gmail.com' },
+        { id: 1, name: 'Tech Academy', email: 'techacademy181@gmail.com' },
+        { id: 2, name: 'Edu Tech', email: 'edutech045@gmail.com' },
       ];
     
       const [selectedAuthority, setSelectedAuthority] = useState(issuingAuthoritiesData[0]);
       const [certificateData, setCertificateData] = useState({
         issuingAuthorityName: '',
         issuingAuthorityEmail: '',
-        userId: 'abhishek000097',
-        userEmail: 'abhishek@gmail.com', 
+        userId: 'johndoe0097',
+        userEmail: 'doe726785@gmail.com', 
         certificateType: '',
         certificateTitle: '',
         requestMessage: '',

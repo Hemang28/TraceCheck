@@ -1,4 +1,3 @@
-// VerificationReq.jsx
 import React, { useState } from "react";
 import "../../styles/Forms/Verification.css";
 

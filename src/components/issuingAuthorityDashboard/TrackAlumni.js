@@ -5,15 +5,15 @@ import logo from '../../assets/dummy-user.png'
 function TrackAlumni() {
   const initialAlumniData = [
     {
-      id: 'alumni001',
+      id: 'johndoe0097',
       name: 'John Doe',
-      email: 'john.doe@example.com',
+      email: 'doe726785@gmail.com',
       profilePhoto: logo,
     },
     {
-      id: 'alumni001',
+      id: 'janesmith001',
       name: 'Jane Smith',
-      email: 'jane.smith@example.com',
+      email: 'jane.smith@gmail.com',
       profilePhoto: logo,
     },
     {

@@ -42,7 +42,7 @@ function RegistrationUser() {
               <input type="email" name="email" placeholder="Email" required />
               <br />
               <input
-                type="file" /* Add the input for profile photo */
+                type="file" 
                 name="profilePhoto"
                 accept="image/*"
                 placeholder="Profile Photo"

@@ -14,17 +14,9 @@ function IAUserRequest() {
       id: 'request001',
       certificateTitle: 'SSC Certificate',
       userName: 'John Doe',
-      userId: 'john001',
-      requestDate: '2023-08-20',
-      requestType: 'Issue',
-    },
-    {
-      id: 'request002',
-      certificateTitle: 'HSC Certificate',
-      userName: 'Jane Smith',
-      userId: 'jane002',
-      requestDate: '2023-08-19',
-      requestType: 'Verify',
+      userId: 'johndoe0097',
+      requestDate: '2023-08-01',
+      requestType: 'Verification',
     },
   ];
   return (

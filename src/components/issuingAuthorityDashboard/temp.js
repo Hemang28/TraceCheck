@@ -14,17 +14,7 @@ function App() {
     // Both file and folder are supported by upload function
     const output = await lighthouse.upload(file, "03a4f6fe.ff4ee70766d646dc90345131bb679658", progressCallback);
     console.log('File Status:', output);
-    /*
-      output:
-        data: {
-          Name: "filename.txt",
-          Size: 88000,
-          Hash: "QmWNmn2gr4ZihNPqaC5oTeePsHvFtkWNpjY3cD6Fd5am1w"
-        }
-      Note: Hash in response is CID.
-    */
-
-      console.log('Visit at https://gateway.lighthouse.storage/ipfs/' + output.data.Hash);
+    console.log('Visit at https://gateway.lighthouse.storage/ipfs/' + output.data.Hash);
   }
 
   return (

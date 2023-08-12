@@ -3,7 +3,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCertificate, faBuilding, faUpload, faList } from '@fortawesome/free-solid-svg-icons';
 import { Web3Storage } from 'web3.storage';
 import { useNavigate } from 'react-router-dom';
-import '../../styles/userDashboard/AddCertificate.css'; // Import your stylesheet
+import '../../styles/userDashboard/AddCertificate.css';
+import { EAS, SchemaEncoder, SchemaRegistry } from "@ethereum-attestation-service/eas-sdk";
+import { ethers } from 'ethers';
+export const EASContractAddress = 0xC2679fBD37d54388Ce493F1DB75320D236e1815e;
+const SchemaUid = "0x5bf4cc0ab2c047682631a29b76a91d043c9e68bf22df35de92b38fdac270001b";
 
 const AddCertificate = () => {
   const navigate = useNavigate();
@@ -13,8 +17,6 @@ const AddCertificate = () => {
     type: '',
     fromDate: '',
     toDate: '',
-    privacy: false,
-    walletAddress: '',
     certificateFile: null,
   });
 
@@ -28,10 +30,6 @@ const AddCertificate = () => {
     setCertificateData((prevData) => ({ ...prevData, certificateFile: file }));
   };
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   console.log(certificateData);
-  // };
 
   const certiUpload = async () => {
     console.log('uploading...');
@@ -47,10 +45,35 @@ const AddCertificate = () => {
     }
   };
 
-  const handleIssueCertificate = async (e) => {
-    e.preventDefault();
-    await certiUpload();
-    navigate('/Add-Certificate');
+  const handleAddCertificate = async (e) => {
+      e.preventDefault();
+      try{
+      const rootCid = await certiUpload();
+      const easSigner = new ethers.Wallet("1910812769a4d5a6b96940b67a5a011a99de8d235b078cdfa7e030641d189eab"); 
+      const provider = new ethers.providers.JsonRpcProvider("https://eth-sepolia.g.alchemy.com/v2/hBuhXe_Xb4n9AIoSeZ8RCPHYQgQX4hF9");
+      const schemaRegistry = new SchemaRegistry(provider);
+      const schema = await schemaRegistry.getByUid(SchemaUid);
+      const encoder = new SchemaEncoder(schema);
+
+      const attestationData = {
+        title: certificateData.title,
+        issuingAuthority: certificateData.issuingAuthority,
+        type: certificateData.type,
+        fromDate: certificateData.fromDate,
+        toDate: certificateData.toDate,
+        certificateRootCID: rootCid,
+      };
+
+      const attestationBytes = encoder.encode(attestationData);
+
+      const easContract = new ethers.Contract(EASContractAddress, EAS.abi, easSigner);
+      const tx = await easContract.createAttestation(attestationBytes);
+
+      const receipt = await tx.wait();
+      console.log('Attestation created. Transaction receipt:', receipt);
+    }catch(err){
+      console.error('Error creating attestation:', err);
+    }
   };
 
   const client = new Web3Storage({
@@ -61,7 +84,7 @@ const AddCertificate = () => {
     <div className="center-form">
       <div className="add-certificate-form">
         <h3>Add Certificate</h3>
-        <form onSubmit={handleIssueCertificate}>
+        <form>
           <div className="form-group">
             <label htmlFor="title">
               <FontAwesomeIcon icon={faCertificate} /> Certificate Title
@@ -84,23 +107,13 @@ const AddCertificate = () => {
               <option value="work_experience">Work Experience</option>
             </select>
           </div>
-          <div className="form-group">
-              <label>Certificate Title</label>
-              <input
-                type="text"
-                className="form-control"
-                name="certificateTitle"
-                value={certificateData.certificateTitle}
-                onChange={handleInputChange}
-                required
-              />
-            </div>
             <div className="form-group">
               <label>Certification Time (From)</label>
               <input
               type="number"
-              id="certificateTimeTo"
-              name="certificateTimeTo"
+              id="fromDate"
+              name="fromDate"
+              value={certificateData.fromDate}
               onChange={handleInputChange}
               min="1900"
               max="2099"
@@ -112,8 +125,8 @@ const AddCertificate = () => {
               <label>Certification Time (To)</label>
               <input
               type="number"
-              id="certificateTimeTo"
-              name="certificateTimeTo"
+              id="toDate"
+              name="toDate"
               onChange={handleInputChange}
               min="1900"
               max="2099"
@@ -128,7 +141,7 @@ const AddCertificate = () => {
             <input type="file" id="certificateFile" name="certificateFile" onChange={handleFileChange} required />
           </div>
           <div className="form-group">
-            <button type="submit" className="btn btn-primary">
+            <button type="submit" className="btn btn-primary" onClick={handleAddCertificate}>
               Add Certificate
             </button>
           </div>
