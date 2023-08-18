@@ -1,16 +1,20 @@
-import React,{useState } from 'react'
+import React from 'react'
 import { Link } from "react-router-dom";
 import '../styles/navbar.css'
 import logo from '../assets/logo.png'
 
 function Navbar(props) {
-  const [isExpanded, setIsExpanded] = useState(false);
-  const [address, setAddress] = useState("");
+  // const [isExpanded, setIsExpanded] = useState(false);
 
   console.log("Navbar Page Log------",props.userData);
-  function handleClick() {
-    setIsExpanded(!isExpanded);
-  }
+
+  const handleLogout = async () => {
+    await props.logout();
+    window.location.replace('/getstarted');
+  };
+  // function handleClick() {
+  //   setIsExpanded(!isExpanded);
+  // }
 
   return (
     <>
@@ -23,11 +27,11 @@ function Navbar(props) {
           </span>
           {props.userData.address ? (
             <>  
-             <Link
+             {/* <Link
                 style={{ textDecoration: "none" }}
                 to="/User-Dashboard"
                 className="animate__animated animate__fadeInDown"
-              >
+              > */}
                 <button className="logged-in">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -47,15 +51,17 @@ function Navbar(props) {
                   </svg>
                   Account
                 </button>
-                </Link>
+                {/* </Link> */}
 
+              {/* <Link to="/"> */}
               <button
                 className="login-button animate__animated animate__fadeInDown"
                 id="logout"
-                onClick={props.logout}
+                onClick={handleLogout}
               >
                 Logout
               </button>
+              {/* </Link> */}
             </>
           ) : (
             <>
