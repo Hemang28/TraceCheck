@@ -9,19 +9,23 @@ const GetStarted = (props) => {
   console.log("Get Started Page--------",props.userData);
   const navigate = useNavigate();
 
-  const handleUserGetStarted = () => {
+  const handleUserGetStarted = async() => {
     if (props.userData && props.userData.address) {
       navigate("/User-Dashboard");
     } else {
       alert("Kindly log in to access the platform")
+      await props.login();
+      navigate("/User-Dashboard");
     } 
   };
 
-  const handleIAGetStarted = () => {
+  const handleIAGetStarted = async() => {
     if (props.userData && props.userData.address) {
       navigate("/IA-Dashboard"); 
     } else {
       alert("Kindly log in to access the platform")
+      await props.login();
+      navigate("/IA-Dashboard");
     } 
   };
   return (

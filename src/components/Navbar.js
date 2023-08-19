@@ -72,7 +72,8 @@ function Navbar(props) {
               Login
             </button>
             </>
-          )}
+          )
+          }
         </nav>
       </header>
     </>

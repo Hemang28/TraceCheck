@@ -292,6 +292,16 @@ function App() {
       <Routes>
         <Route exact path="/" element={<LandingPage />} />
         <Route
+                  path="/getstarted"
+                  element={
+                    <GetStarted
+                      userData={userData}
+                      login={login}
+                      logout={logout}
+                    />
+                  }
+                />
+        <Route
           path="/*"
           element={
             <>
@@ -315,16 +325,7 @@ function App() {
                   element={<RequestCertificate />}
                 />
                 <Route path="/landingpage" element={<LandingPage />} />
-                <Route
-                  path="/getstarted"
-                  element={
-                    <GetStarted
-                      userData={userData}
-                      login={login}
-                      logout={logout}
-                    />
-                  }
-                />
+                
                 <Route path="/verification" element={<VerificationReq />} />
                 <Route
                   path="/Registrationuser"
